@@ -1,0 +1,11 @@
+{
+    \"Name\" : \"CodeCheckerPlugin\",
+    \"Version\" : \"0.0.1\",
+    \"CompatVersion\" : \"0.0.1\",
+    \"Vendor\" : \"ELTE\",
+    \"Copyright\" : \"(C) ELTE\",
+    \"License\" : \"LGPL\",
+    \"Description\" : \"Plugin for the CodeChecker\",
+    \"Url\" : \"http://www.elte.hu\",
+    $$dependencyList
+}
