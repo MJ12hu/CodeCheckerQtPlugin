@@ -17,6 +17,8 @@ public:
     void                finish();
 private:
     OptionsPageWidget*  m_widget;
+signals:
+    void                settingsChanged();
 };
 }
 }

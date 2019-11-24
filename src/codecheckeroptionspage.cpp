@@ -43,6 +43,7 @@ void CodeCheckerQtPlugin::Internal::CodeCheckerOptionsPage::apply()
         Core::ICore::instance()->settings()->setValue("codeCheckerPath", CodeCheckerUtils::codeCheckerPath);
         Core::ICore::instance()->settings()->setValue("codeCheckerEnv", CodeCheckerUtils::codeCheckerEnv);
         Core::ICore::instance()->settings()->setValue("codeCheckerAutoAnalyze", CodeCheckerUtils::needAutoAnalyze);
+        emit settingsChanged();
     }
 }
 

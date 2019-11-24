@@ -90,6 +90,7 @@ bool CodeCheckerPlugin::initialize(const QStringList &arguments, QString *errorS
     CodeCheckerUtils::codeCheckerEnv = Core::ICore::instance()->settings()->value("codeCheckerEnv").toString();
     CodeCheckerUtils::needAutoAnalyze = Core::ICore::instance()->settings()->value("codeCheckerAutoAnalyze", true).toBool();
     m_codeChecker = std::make_shared<CodeCheckerService>();
+    connect(m_optionsPage.get(), &CodeCheckerOptionsPage::settingsChanged, m_codeChecker.get(), &CodeCheckerService::settingsChanged);
     m_codeChecker->settingsChanged();
 
     CodeCheckerUtils::codeCheckerInstance = m_codeChecker.get();

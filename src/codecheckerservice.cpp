@@ -6,7 +6,7 @@
 
 CodeCheckerService::CodeCheckerService(QObject *parent) : QObject(parent)
 {
-    m_serverProcess = std::make_shared<QProcess>();
+    m_serverProcess = nullptr;
 }
 
 void CodeCheckerService::settingsChanged()
@@ -24,6 +24,10 @@ CodeCheckingInstance* CodeCheckerService::analyze(QString p_buildPath, QString p
 
 void CodeCheckerService::startServer()
 {
+    if(m_serverProcess)
+        m_serverProcess->kill();
+    m_serverProcess = new QProcess();
+    connect(m_serverProcess, SIGNAL(finished(int)), this, SLOT(serverFinished(int)));
     m_serverProcess->start("bash", QStringList() << "-c" << "source " + CodeCheckerUtils::codeCheckerEnv + " && " + CodeCheckerUtils::codeCheckerPath + " server");
 }
 
@@ -34,4 +38,11 @@ void CodeCheckerService::analyzeProcessFinished(QString p_name)
     t_inst->deleteLater();
     qDebug() << "emitting analyzeFinished";
     emit analyzeFinished(p_name);
+}
+
+void CodeCheckerService::serverFinished(int exitCode)
+{
+    if(sender() == m_serverProcess)
+        m_serverProcess = nullptr;
+    sender()->deleteLater();
 }
