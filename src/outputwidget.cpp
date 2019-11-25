@@ -1,7 +1,6 @@
 #include "outputwidget.h"
 #include "ui_outputwidget.h"
 
-#include <iostream>
 #include <QDebug>
 
 using namespace boost;
@@ -18,7 +17,6 @@ OutputWidget::OutputWidget(QWidget *parent, QComboBox *p_comboBox) :
 
     //loadData();
     connect(ui->resultsWidget, SIGNAL(itemClicked(QTreeWidgetItem*,int)), this, SLOT(treeClicked(QTreeWidgetItem*,int)));
-    qDebug() << "OPTIONSPAGE CREATED";
     connect(m_comboBox, &QComboBox::currentTextChanged, this, &OutputWidget::itemChanged);
 }
 
@@ -46,7 +44,7 @@ void OutputWidget::treeClicked(QTreeWidgetItem *p_item, int p_col)
     {
         QStringList t_asd = p_item->data(1, Qt::DisplayRole).toString().split(':');
         Core::EditorManager::instance()->openEditorAt(t_asd.first(), t_asd.last().toInt());
-        qDebug() << p_item->data(1, Qt::DisplayRole);
+        //qDebug() << p_item->data(1, Qt::DisplayRole);
     }
 }
 

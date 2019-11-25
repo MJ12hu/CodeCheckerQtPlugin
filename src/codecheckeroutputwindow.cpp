@@ -51,7 +51,7 @@ bool CodeCheckerQtPlugin::Internal::CodeCheckerOutputWindow::hasFocus() const
 
 void CodeCheckerQtPlugin::Internal::CodeCheckerOutputWindow::setFocus()
 {
-    qDebug() << "----SetFoCUS";
+
 }
 
 bool CodeCheckerQtPlugin::Internal::CodeCheckerOutputWindow::canNext() const
